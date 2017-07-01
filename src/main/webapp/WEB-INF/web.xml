@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>com.controller.StartupController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <url-pattern>/helloPage/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowStudentFavorite</servlet-name>
+        <servlet-class>com.controller.ShowStudentFavoriteController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ShowStudentFavorite</servlet-name>
+        <url-pattern>/showStudentFavorites</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TeacherController</servlet-name>
+        <servlet-class>com.controller.TeacherController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>TeacherController</servlet-name>
+        <url-pattern>/teachers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SendEmailController</servlet-name>
+        <servlet-class>com.controller.SendEmailController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>SendEmailController</servlet-name>
+        <url-pattern>/sendEmailToAllStudents</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>main.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
