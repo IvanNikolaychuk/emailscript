@@ -1,10 +1,14 @@
 package com.service.email;
 
 import com.service.db.StudentService;
-import org.apache.commons.mail.*;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.HtmlEmail;
 
-import java.io.*;
-import java.net.MalformedURLException;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
@@ -21,8 +25,8 @@ public class EmailSenderService {
             email.setSmtpPort(587);
             email.setSSL(true);
             email.setAuthenticator(new DefaultAuthenticator(MAIL, PASSWORD));
-            email.setFrom("school@gmail.com");
-            email.setSubject("Hello from Ivan");
+            email.setFrom("teacher-report@gmail.com");
+            email.setSubject("Teacher Report");
             email.setHtmlMsg(content);
             email.addTo(receiver);
             email.send();

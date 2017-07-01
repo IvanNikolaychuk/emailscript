@@ -34,15 +34,6 @@ public class DateService {
         return readableDates;
     }
 
-    public static void main(String[] args) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(new Date());
-        calendar.add(MINUTE, -20);
-
-        List<Long> daysIds = Arrays.asList(new Date().getTime(), calendar.getTime().getTime());
-        new DateService().toReadableDates(daysIds, daysIds);
-    }
-
     /**
      * Collects time of them same day. Day acts as key, list of times as value.
      */

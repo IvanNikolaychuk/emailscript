@@ -14,15 +14,6 @@
         <url-pattern>/helloPage/</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>ShowStudentFavorite</servlet-name>
-        <servlet-class>com.controller.ShowStudentFavoriteController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>ShowStudentFavorite</servlet-name>
-        <url-pattern>/showStudentFavorites</url-pattern>
-    </servlet-mapping>
 
     <servlet>
         <servlet-name>TeacherController</servlet-name>

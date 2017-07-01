@@ -9,7 +9,7 @@
     <h1 style="color:#008D71;margin:0;padding-top: 20px">Teacher Staticstic</h1>
     <h3 style="color:#031E45">Your favourite teacher is: ${favouriteTeacher.name}</h3>
     <div>
-        <img src='/photos/${favouriteTeacher.id}.jpg' style=" height:400px;width:auto;border-radius:5%">
+        <img src='https://raw.githubusercontent.com/IvanNikolaychuk/emailscript/master/src/main/webapp/photos/${favouriteTeacher.id}.jpg' style=" height:400px;width:auto;border-radius:5%">
         <br><br>
         <i>
             Study Major: ${favouriteTeacher.studyMajor} <br><br>
@@ -35,7 +35,8 @@
     <jsp:useBean id="topRatedTeachers" scope="request" type="java.util.List"/>
     <c:forEach items="${topRatedTeachers}" var="topRatedTeacher">
         <div style="border-top:1px solid #a1aab8; margin-top: 4px">
-            <img src='/photos/${topRatedTeacher.id}.jpg' style="padding-top:50px;height:400px;width:auto;border-radius:5%">
+            <h3 style="color:#031E45">${topRatedTeacher.name}</h3>
+            <img src='https://raw.githubusercontent.com/IvanNikolaychuk/emailscript/master/src/main/webapp/photos/${topRatedTeacher.id}.jpg' style="padding-top:50px;height:400px;width:auto;border-radius:5%">
             <br><br>
             <i>
                 Study Major: ${topRatedTeacher.studyMajor} <br><br>

@@ -81,7 +81,4 @@ public class StudentService {
         return ids;
     }
 
-    public static void main(String[] args) {
-        new StudentService().getAllEmails();
-    }
 }
