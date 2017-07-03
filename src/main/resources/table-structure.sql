@@ -1,3 +1,6 @@
+CREATE DATABASE students;
+USE students;
+
 CREATE TABLE teacherlist_houdai_rank (
   `ID`   SMALLINT(6) NOT NULL,
   `name` VARCHAR(50) NOT NULL,
