@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
+import static java.util.Collections.singletonList;
 
 public class TeacherController extends HttpServlet {
     private StudentFavoriteTeacherService favoriteTeacherService = new StudentFavoriteTeacherService();
@@ -26,21 +27,22 @@ public class TeacherController extends HttpServlet {
         if (studentId == null || !studentService.studentExists(studentId))
             req.getRequestDispatcher("error-student.jsp").forward(req, resp);
 
-        req.setAttribute("favouriteTeacher", getFavouriteTeacher(studentId));
-        req.setAttribute("topRatedTeachers", teacherInfoService.getInfos(new ArrayList<>(teacherListByRating.getIdsOfTeachersThatHaveRankA())));
+        req.setAttribute("favouriteTeachers", getFavouriteTeachers(studentId));
+        req.setAttribute("topRatedTeachers", getTopRatedTeachers(studentId));
 
         req.getRequestDispatcher("teacher.jsp").forward(req, resp);
     }
 
-    private TeacherInfo getFavouriteTeacher(Integer studentId) {
-        Integer favouriteTeacherId = favoriteTeacherService.getFavoriteTeacher(studentId);
-        return favouriteTeacherId == null ? emptyInfo() : teacherInfoService.getInfo(favouriteTeacherId);
+    private List<TeacherInfo> getTopRatedTeachers(Integer studentId) {
+        Set<Integer> topRated = teacherListByRating.getIdsOfTeachersThatHaveRankA();
+        topRated.removeAll(favoriteTeacherService.getFavoriteTeachers(studentId));
+
+        return teacherInfoService.getInfos(new ArrayList<>(topRated));
     }
 
-    private TeacherInfo emptyInfo() {
-        TeacherInfo teacherInfo = new TeacherInfo();
-        teacherInfo.setId(0);
-        return teacherInfo;
+    private List<TeacherInfo> getFavouriteTeachers(Integer studentId) {
+        List<Integer> favouriteTeacherId = favoriteTeacherService.getFavoriteTeachers(studentId);
+        return favouriteTeacherId.isEmpty() ? new ArrayList<>() : teacherInfoService.getInfos(favouriteTeacherId);
     }
 
     private Integer getStudentId(String studentId) {

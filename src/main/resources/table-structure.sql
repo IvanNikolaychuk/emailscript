@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS students;
 CREATE DATABASE students;
 USE students;
 
@@ -10,7 +11,6 @@ CREATE TABLE teacherlist_houdai_rank (
   ENGINE = MyISAM
   DEFAULT CHARSET = utf8;
 
-drop table teacherlist_schedule_houdai_favoriteTeacherID;
 CREATE TABLE teacherlist_schedule_houdai_favoriteTeacherID (
   `dateid`          BIGINT NOT NULL,
   `timeid`          BIGINT  NOT NULL,
@@ -40,18 +40,16 @@ CREATE TABLE studentFavorite
 (
   studentID         INT(11)     NOT NULL,
   favoriteTeacherID SMALLINT(6) NOT NULL,
-  PRIMARY KEY (`studentID`),
   FOREIGN KEY (`favoriteTeacherID`) REFERENCES teacherlist_houdai (ID)
 )
   ENGINE = MyISAM
   DEFAULT CHARSET = utf8;
 
-drop table teacher_evaluate;
 CREATE TABLE teacher_evaluate (
   `teacherID` SMALLINT(6) NOT NULL,
   `studentID` SMALLINT(6) NOT NULL,
-  `classDate` BIGINT NOT NULL,
-  `classTime` BIGINT  NOT NULL,
+  `classDate` BIGINT      NOT NULL,
+  `classTime` BIGINT      NOT NULL,
   `manzokudo` TINYINT(4)  NOT NULL DEFAULT '0',
   PRIMARY KEY (`teacherID`, `classDate`, `classTime`)
 )
