@@ -34,7 +34,13 @@ public class TeacherController extends HttpServlet {
 
     private TeacherInfo getFavouriteTeacher(Integer studentId) {
         Integer favouriteTeacherId = favoriteTeacherService.getFavoriteTeacher(studentId);
-        return favouriteTeacherId == null ? null : teacherInfoService.getInfo(favouriteTeacherId);
+        return favouriteTeacherId == null ? emptyInfo() : teacherInfoService.getInfo(favouriteTeacherId);
+    }
+
+    private TeacherInfo emptyInfo() {
+        TeacherInfo teacherInfo = new TeacherInfo();
+        teacherInfo.setId(0);
+        return teacherInfo;
     }
 
     private Integer getStudentId(String studentId) {

@@ -7,6 +7,7 @@
 <body style="margin:0;">
 <div style="background:#EDEDED; padding-bottom:20px;text-align:center">
     <h1 style="color:#008D71;margin:0;padding-top: 20px">Teacher Staticstic</h1>
+    <c:if test="${favouriteTeacher.id != 0}">
     <h3 style="color:#031E45">Your favourite teacher is: ${favouriteTeacher.name}</h3>
     <div>
         <img src='https://raw.githubusercontent.com/IvanNikolaychuk/emailscript/master/src/main/webapp/photos/${favouriteTeacher.id}.jpg' style=" height:400px;width:auto;border-radius:5%">
@@ -31,6 +32,7 @@
 
     </div>
     <br><br><br>
+    </c:if>
     <h3 style="color:#031E45">Teacher with 'A' ratigs</h3>
     <jsp:useBean id="topRatedTeachers" scope="request" type="java.util.List"/>
     <c:forEach items="${topRatedTeachers}" var="topRatedTeacher">
